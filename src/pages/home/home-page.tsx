@@ -12,7 +12,7 @@ export const HomePage: FC = () => {
         <div className="w-[60%] mx-auto mt-12">
           <Search />
         </div>
-        <div className="w-[60%] mx-auto mt-6 mb-12">
+        <div className="w-[60%] mx-auto mt-2 mb-12">
           <UserCards />
         </div>
       </div>

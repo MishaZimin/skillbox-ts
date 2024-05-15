@@ -25,7 +25,7 @@ export const UserCard: FC<IProps> = ({ userCard }) => {
     <>
       <button
         onClick={handleProfile}
-        className="flex flex-row w-full gap-4 p-4 m-4 text-start bg-slate-200 rounded-xl">
+        className="flex flex-row w-full p-4 text-start bg-slate-200 rounded-xl">
         <div className="w-[20%] my-auto mx-auto ">
           <img
             src={userCard.avatar}
@@ -33,7 +33,7 @@ export const UserCard: FC<IProps> = ({ userCard }) => {
             className="rounded-full min-w-[40px]"
           />
         </div>
-        <div className="w-[80%] my-auto">
+        <div className="w-[80%] my-auto ml-4">
           <p className="font-bold text-[20px] mb-2">
             {userCard.first_name} {userCard.last_name}
           </p>

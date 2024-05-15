@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
-import { FC, useState, useContext, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setQuery } from "./../../features/searchSlice";
 import { CiSearch } from "react-icons/ci";

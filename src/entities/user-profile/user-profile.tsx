@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 // import { MyContext } from "../../features/context/my-provider";
-import { Input } from "../../shared/ui/input";
+// import { Input } from "../../shared/ui/input";
 
 type IUserCard = {
   id: number;
@@ -19,6 +19,12 @@ export const UserProfile: FC<IProps> = ({ userCard }) => {
   const [firstName, setFirstName] = useState(userCard.first_name);
   const [lastName, setLastName] = useState(userCard.last_name);
   const [email, setEmail] = useState(userCard.email);
+
+  // const [user, setUser] = useState({
+  //   firstName: userCard.first_name,
+  //   lastName: userCard.last_name,
+  //   email: userCard.email
+  // });
 
   // const getUserCards = async () => {
   //   const res = await fetch(`https://reqres.in/api/users/${userCard.id}`);
