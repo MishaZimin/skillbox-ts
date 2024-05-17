@@ -15,61 +15,36 @@ interface IProps {
   userCard: IUserCard;
 }
 
-export const UserProfile: FC<IProps> = ({ userCard }) => {
-  const [firstName, setFirstName] = useState(userCard.first_name);
-  const [lastName, setLastName] = useState(userCard.last_name);
-  const [email, setEmail] = useState(userCard.email);
+export const MyProfile: FC = () => {
+  const [firstName, setFirstName] = useState<string>(
+    localStorage.getItem("firstName") || ""
+  );
+  const [lastName, setLastName] = useState<string>(
+    localStorage.getItem("firstName") || ""
+  );
+  const [email, setEmail] = useState<string>(
+    localStorage.getItem("email") || ""
+  );
 
-  // const [user, setUser] = useState({
-  //   firstName: userCard.first_name,
-  //   lastName: userCard.last_name,
-  //   email: userCard.email
-  // });
-
-  // const getUserCards = async () => {
-  //   const res = await fetch(`https://reqres.in/api/users/${userCard.id}`);
-  //   const json = await res.json();
-  //   console.log(json.data);
-  //   return json.data;
-  // };
-
-  // useEffect(() => {
-  //   const res = getUserCards();
-  //   console.log("=res=", res);
-  // });
-
-  const handleSave = async () => {
-    try {
-      console.log("patch update:", firstName, "|", lastName, "|", email);
-      const url = `https://reqres.in/api/users/${userCard.id}`;
-      console.log(url);
-      const res = await fetch(url, {
-        method: "PATCH",
-        body: JSON.stringify({
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-        }),
-      });
-
-      if (!res.ok) {
-        throw new Error("error" + res.status);
-      }
-      console.log("res: ", res);
-      console.log("status", res.status);
-    } catch (error) {
-      console.error("error", error);
-    }
-  };
+  const handleSave = async () => {};
 
   useEffect(() => {});
+
+  const getAvatar = () => {
+    const avatar = localStorage.getItem("avatar");
+    const defAvatar =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThprVrxe3Zw_m09SuWD2K25LSSP4j9bYjGoA&s";
+    console.log(avatar);
+
+    return avatar ? avatar : defAvatar;
+  };
 
   return (
     <>
       <div className="flex flex-row w-full gap-4 p-4 m-4 text-start bg-slate-200 rounded-xl">
         <div className="w-[20%] my-auto mx-auto ">
           <img
-            src={userCard.avatar}
+            src={getAvatar()}
             alt="avatar"
             className="rounded-full min-w-[40px]"
           />

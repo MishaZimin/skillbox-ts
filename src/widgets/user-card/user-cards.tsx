@@ -46,10 +46,14 @@ export const UserCards: FC = () => {
   // };
 
   const handleNextPage = () => {
+    setFilter("all");
+
     setPage((prevPage) => prevPage + 1);
   };
 
   const handlePrevPage = () => {
+    setFilter("all");
+
     setPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
@@ -90,9 +94,9 @@ export const UserCards: FC = () => {
 
   return (
     <>
-      <div className=" rounded-full bg-slate-200 w-[30%] mb-6 pr-2">
+      <div className=" rounded-full bg-slate-200 w-[40%] mb-6 pr-2">
         <select
-          className=" w-[100%] bg-slate-200 rounded-full py-2 px-4 "
+          className="w-full px-4 py-2 rounded-full  bg-slate-200"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}>
           <option className="" value="all">

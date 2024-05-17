@@ -4,20 +4,14 @@ import { useLocation } from "react-router-dom";
 
 import { UserProfile } from "../../entities/user-profile/user-profile";
 import { BackBtn } from "../../features/back/back-btn";
+import { MyProfile } from "../../entities/my-profile/my-profile";
 
-export const UserPage: FC = () => {
-  const location = useLocation();
-  const user = location.state?.user;
-
-  if (!user) {
-    return <div>Данные пользователя не найдены</div>;
-  }
-
+export const ProfilePage: FC = () => {
   return (
     <>
       <BackBtn />
       <div className="w-[60%] mx-auto">
-        <UserProfile userCard={user} />
+        <MyProfile />
       </div>
     </>
   );
