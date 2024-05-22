@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
-import { UserCard } from "../../entities/user-card/user-card";
+import { UserCard } from "../user-card/user-card";
 import { useSelector } from "react-redux";
 // import RootState from "./../../app/store/store";
 import { IoIosArrowBack } from "react-icons/io";
@@ -32,28 +32,13 @@ export const UserCards: FC = () => {
     setOriginalUserCards(json.data);
   };
 
-  useEffect(() => {
-    getUserCards(page);
-  }, [page]);
-
-  useEffect(() => {
-    handleFilterChange(filter);
-  }, [filter]);
-
-  // const handleProfile = (userId: number) => {
-  //   console.log("handleProfile", userId);
-  //   navigate(`/user/${userId}`);
-  // };
-
   const handleNextPage = () => {
     setFilter("all");
-
     setPage((prevPage) => prevPage + 1);
   };
 
   const handlePrevPage = () => {
     setFilter("all");
-
     setPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
@@ -82,21 +67,19 @@ export const UserCards: FC = () => {
     }
   };
 
-  // const handleEvenIds = () => {
-  //   const filteredCards = userCards.filter(userCard => userCard.id % 2 === 0);
-  //   setUserCards(filteredCards);
-  // };
+  useEffect(() => {
+    getUserCards(page);
+  }, [page]);
 
-  // const handleOddIds = () => {
-  //   const filteredCards = userCards.filter(userCard => userCard.id % 2 !== 0);
-  //   setUserCards(filteredCards);
-  // };
+  useEffect(() => {
+    handleFilterChange(filter);
+  }, [filter]);
 
   return (
     <>
-      <div className=" rounded-full bg-slate-200 w-[40%] mb-6 pr-2">
+      <div className=" rounded-full bg-gray-200 w-[40%] mb-6 pr-2">
         <select
-          className="w-full px-4 py-2 rounded-full  bg-slate-200"
+          className="w-full px-4 py-2 rounded-full bg-slate-200"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}>
           <option className="" value="all">

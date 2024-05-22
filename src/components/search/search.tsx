@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { FC, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setQuery } from "./../../features/searchSlice";
+import { setQuery } from "../../app/store/searchSlice";
 import { CiSearch } from "react-icons/ci";
 
 export const Search: FC = () => {
@@ -29,7 +29,7 @@ export const Search: FC = () => {
 
   return (
     <>
-      <div className="flex flex-row rounded-full bg-slate-200 ">
+      <div className="flex flex-row bg-gray-200 rounded-full ">
         <input
           placeholder="search"
           value={search}

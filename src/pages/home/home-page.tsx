@@ -1,12 +1,10 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { FC, useState, useEffect } from "react";
 
-import { UserCards } from "../../widgets/user-card/user-cards";
-import { Search } from "../../widgets/search/search";
-// import { MyProvider } from "../../features/context/my-provider";
-import { useNavigate } from "react-router-dom";
-import { RegBtn } from "../../features/reg-btn/reg-btn";
-import { ProfileBtn } from "../../features/profile-btn/profile-btn";
+import { UserCards } from "../../components/user-cards/user-cards";
+import { Search } from "../../components/search/search";
+import { RegBtn } from "../../components/btn/reg-btn";
+import { ProfileBtn } from "../../components/btn/profile-btn";
 
 export const HomePage: FC = () => {
   const [token, setToken] = useState<string | null>(null);
@@ -32,8 +30,8 @@ export const HomePage: FC = () => {
             </div>
           </>
         ) : (
-          <div className="w-[60%] mx-auto mt-12">
-            <p className="mb-8 text-center">зарегистрируйтесь</p>
+          <div className="p-4 mx-auto mt-12 bg-gray-100 rounded-xl">
+            <p className="mb-8 font-bold text-center">зарегистрируйтесь</p>
             <div className="flex justify-center">
               <RegBtn />
             </div>

@@ -1,8 +1,9 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 import { FC } from "react";
+
 interface IInput {
   value: any;
 }
+
 export const Input: FC<IInput> = ({ value }) => {
   return (
     <>

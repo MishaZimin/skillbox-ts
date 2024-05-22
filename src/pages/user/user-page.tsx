@@ -2,8 +2,8 @@
 import { FC } from "react";
 import { useLocation } from "react-router-dom";
 
-import { UserProfile } from "../../entities/user-profile/user-profile";
-import { BackBtn } from "../../features/back/back-btn";
+import { UserProfile } from "../../components/user-profile/user-profile";
+import { BackBtn } from "../../components/btn/back-btn";
 
 export const UserPage: FC = () => {
   const location = useLocation();

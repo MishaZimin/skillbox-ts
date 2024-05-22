@@ -3,18 +3,15 @@ import ReactDOM from "react-dom/client";
 
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-import { App } from "./app/App";
 import { HomePage } from "./pages/home/home-page";
 import { UserPage } from "./pages/user/user-page";
-import { RegistrationPage } from "./pages/registration/registration";
+import { RegistrationPage } from "./pages/registration/registration-page";
 import { ProfilePage } from "./pages/profile/profile-page";
 
-import reportWebVitals from "./reportWebVitals";
-import "./index.css";
 import { Provider } from "react-redux";
+import reportWebVitals from "./reportWebVitals";
 import store from "./app/store/store";
-
-// const store = setupStore();
+import "./index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

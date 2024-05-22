@@ -1,4 +1,6 @@
 import { FC, useEffect, useState } from "react";
+import { Avatar } from "../ui/avatar";
+
 // import { useNavigate } from "react-router-dom";
 // import { MyContext } from "../../features/context/my-provider";
 // import { Input } from "../../shared/ui/input";
@@ -68,11 +70,7 @@ export const UserProfile: FC<IProps> = ({ userCard }) => {
     <>
       <div className="flex flex-row w-full gap-4 p-4 m-4 text-start bg-slate-200 rounded-xl">
         <div className="w-[20%] my-auto mx-auto ">
-          <img
-            src={userCard.avatar}
-            alt="avatar"
-            className="rounded-full min-w-[40px]"
-          />
+          <Avatar avatar={userCard.avatar} />
         </div>
         <div className="w-[80%] my-auto">
           <div className="flex flex-col gap-2 min-w-40 max-w-80">

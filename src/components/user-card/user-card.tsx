@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 // import { MyContext } from "../../features/context/my-provider";
+import { Avatar } from "../ui/avatar";
 
 type IUserCard = {
   id: number;
@@ -25,13 +26,9 @@ export const UserCard: FC<IProps> = ({ userCard }) => {
     <>
       <button
         onClick={handleProfile}
-        className="flex flex-row w-full p-4 text-start bg-slate-200 rounded-xl">
-        <div className="w-[20%] my-auto mx-auto ">
-          <img
-            src={userCard.avatar}
-            alt="avatar"
-            className="rounded-full min-w-[40px]"
-          />
+        className="flex flex-row w-full p-4 bg-gray-200 text-start rounded-xl">
+        <div className="w-[20%] min-w-40 my-auto">
+          <Avatar avatar={userCard.avatar} />
         </div>
         <div className="w-[80%] my-auto ml-4">
           <p className="font-bold text-[20px] mb-2">

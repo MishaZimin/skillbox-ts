@@ -2,9 +2,9 @@
 import { FC } from "react";
 import { useLocation } from "react-router-dom";
 
-import { UserProfile } from "../../entities/user-profile/user-profile";
-import { BackBtn } from "../../features/back/back-btn";
-import { MyProfile } from "../../entities/my-profile/my-profile";
+import { UserProfile } from "../../components/user-profile/user-profile";
+import { BackBtn } from "../../components/btn/back-btn";
+import { MyProfile } from "../../components/my-profile/my-profile";
 
 export const ProfilePage: FC = () => {
   return (
