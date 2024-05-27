@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 import { FC, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 import { FC } from "react";
 
 import { BackBtn } from "../../components/btn/back-btn";

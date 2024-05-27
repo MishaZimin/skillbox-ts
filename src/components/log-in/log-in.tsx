@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const RegForm: FC = () => {

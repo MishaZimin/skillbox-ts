@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 

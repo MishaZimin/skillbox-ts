@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 import { FC } from "react";
 import { useLocation } from "react-router-dom";
 
