@@ -5,16 +5,16 @@ import { useNavigate } from "react-router-dom";
 export const RegBtn: FC = () => {
   const navigate = useNavigate();
 
-  const handleBack = () => {
+  const handleClick = () => {
     navigate("/reg");
   };
 
   return (
     <>
       <button
-        onClick={handleBack}
-        className="flex flex-col px-4 py-2 bg-gray-200 rounded-full">
-        <p>регистрация</p>
+        onClick={handleClick}
+        className="flex flex-col px-4 py-2 transition duration-200 transform bg-gray-200 rounded-full hover:bg-white">
+        <p>Регистрация</p>
       </button>
     </>
   );

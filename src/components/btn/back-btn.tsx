@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { FC } from "react";
-import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 export const BackBtn: FC = () => {
   const navigate = useNavigate();

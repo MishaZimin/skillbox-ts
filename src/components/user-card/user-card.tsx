@@ -1,21 +1,14 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-// import { MyContext } from "../../features/context/my-provider";
+
 import { Avatar } from "../ui/avatar";
+import { IUserCardData } from "../../components/user-cards/user-cards";
 
-type IUserCard = {
-  id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  avatar: string;
-};
-
-interface IProps {
-  userCard: IUserCard;
+interface IUserCard {
+  userCard: IUserCardData;
 }
 
-export const UserCard: FC<IProps> = ({ userCard }) => {
+export const UserCard: FC<IUserCard> = ({ userCard }) => {
   const navigate = useNavigate();
 
   const handleProfile = () => {
@@ -26,7 +19,7 @@ export const UserCard: FC<IProps> = ({ userCard }) => {
     <>
       <button
         onClick={handleProfile}
-        className="flex flex-row w-full p-4 bg-gray-200 text-start rounded-xl">
+        className="flex flex-row w-full p-2 transition duration-200 transform bg-gray-100 text-start rounded-2xl hover:bg-gray-200">
         <div className="w-[20%] min-w-40 my-auto">
           <Avatar avatar={userCard.avatar} />
         </div>

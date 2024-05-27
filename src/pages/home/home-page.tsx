@@ -3,8 +3,8 @@ import { FC, useState, useEffect } from "react";
 
 import { UserCards } from "../../components/user-cards/user-cards";
 import { Search } from "../../components/search/search";
-import { RegBtn } from "../../components/btn/reg-btn";
 import { ProfileBtn } from "../../components/btn/profile-btn";
+import { WelcomeLogIn } from "../../components/welcome-log-in/welcome-log-in";
 
 export const HomePage: FC = () => {
   const [token, setToken] = useState<string | null>(null);
@@ -30,12 +30,7 @@ export const HomePage: FC = () => {
             </div>
           </>
         ) : (
-          <div className="p-4 mx-auto mt-12 bg-gray-100 rounded-xl">
-            <p className="mb-8 font-bold text-center">зарегистрируйтесь</p>
-            <div className="flex justify-center">
-              <RegBtn />
-            </div>
-          </div>
+          <WelcomeLogIn />
         )}
       </div>
     </>

@@ -1,32 +1,17 @@
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { MyContext } from "../../features/context/my-provider";
-// import { Input } from "../../shared/ui/input";
-
-// type IUserCard = {
-//   id: number;
-//   email: string;
-//   first_name: string;
-//   last_name: string;
-//   avatar: string;
-// };
-
-// interface IProps {
-//   userCard: IUserCard;
-// }
 
 export const RegForm: FC = () => {
   const navigate = useNavigate();
 
-  const [firstName, setFirstName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [, setToken] = useState("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [avatar, setAvatar] = useState<string>("");
+  const [shake, setShake] = useState<boolean>(false);
 
   const handleReg = async () => {
     try {
-      console.log("reg", email, "|", password, "|", firstName, "|", avatar);
       const url = `https://reqres.in/api/register`;
       const res = await fetch(url, {
         method: "POST",
@@ -45,36 +30,30 @@ export const RegForm: FC = () => {
       }
 
       const data = await res.json();
-      setToken(data.token);
 
       localStorage.setItem("firstName", firstName);
       localStorage.setItem("email", email);
       localStorage.setItem("avatar", avatar);
       localStorage.setItem("token", data.token);
 
-      console.log("Registration successful! token:", data.token);
-
-      console.log("res: ", res);
-      console.log("status", res.status);
       navigate("/");
     } catch (error) {
       console.error("error", error);
+      setShake(true);
+      setTimeout(() => setShake(false), 500);
     }
   };
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      setToken(storedToken);
-    }
-  }, []);
 
   return (
     <>
       <div>
-        <div className="flex flex-row w-full gap-4 p-4 m-4 my-auto bg-gray-200 text-start rounded-xl">
+        <div
+          className={`flex flex-row w-full gap-4 p-4 m-4 my-auto bg-gray-100 text-start rounded-xl ${
+            shake ? "animate-shake" : ""
+          }`}>
           <div className="w-full my-auto">
             <div className="pb-4 text-[20px] font-bold">
-              <p>регистрация</p>
+              <p>Регистрация</p>
             </div>
             <div className="flex flex-col gap-2 min-w-40">
               <input
@@ -83,7 +62,6 @@ export const RegForm: FC = () => {
                 onChange={(e) => setFirstName(e.target.value)}
                 className="px-3 py-1 rounded-md"
               />
-
               <input
                 value={email}
                 placeholder="Email"
@@ -103,11 +81,10 @@ export const RegForm: FC = () => {
                 className="px-3 py-1 rounded-md"
               />
             </div>
-
             <button
               onClick={handleReg}
-              className="px-3 py-1 mt-4 bg-white rounded-md">
-              reg
+              className="px-3 py-1 mt-4 transition duration-200 transform bg-gray-200 rounded-full hover:bg-white">
+              <p>Далее</p>
             </button>
           </div>
         </div>

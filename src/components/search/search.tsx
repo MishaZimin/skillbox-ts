@@ -1,18 +1,16 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { FC, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+
 import { setQuery } from "../../app/store/searchSlice";
 import { CiSearch } from "react-icons/ci";
 
 export const Search: FC = () => {
   const [search, setSearch] = useState<string>("");
-  // const { setSearchValue } = useContext(MyContext);
   const dispatch = useDispatch();
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
-
-    // setSearchValue(event.target.value);
   };
 
   useEffect(() => {
@@ -29,12 +27,12 @@ export const Search: FC = () => {
 
   return (
     <>
-      <div className="flex flex-row bg-gray-200 rounded-full ">
+      <div className="flex flex-row bg-gray-100 rounded-full ">
         <input
           placeholder="search"
           value={search}
           onChange={handleSearchChange}
-          className="w-full px-4 py-2 rounded-full bg-red bg-slate-200"
+          className="w-full px-4 py-2 bg-gray-100 rounded-full bg-red"
         />
         <button onClick={handleSearchSubmit} className="px-4">
           <CiSearch />

@@ -1,45 +1,42 @@
-import React, { FC, useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { FC, useEffect, useState, useCallback } from "react";
 import { UserCard } from "../user-card/user-card";
 import { useSelector } from "react-redux";
-// import RootState from "./../../app/store/store";
-import { IoIosArrowBack } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
+import { Pagination } from "../pagination/pagination";
+import { Filter } from "../filter/filter";
 
-type IUserCard = {
+export interface IUserCardData {
   id: number;
   email: string;
   first_name: string;
   last_name: string;
   avatar: string;
-};
+}
+
+interface IUserApiResponse {
+  page: number;
+  per_page: number;
+  total: number;
+  total_pages: number;
+  data: IUserCardData[];
+}
 
 export const UserCards: FC = () => {
-  const [userCards, setUserCards] = useState<IUserCard[]>([]);
+  const [userCards, setUserCards] = useState<IUserCardData[]>([]);
   const [page, setPage] = useState<number>(1);
   const [filter, setFilter] = useState<string>("all");
-  const [originalUserCards, setOriginalUserCards] = useState<IUserCard[]>([]);
-
-  // const navigate = useNavigate();
+  const [originalUserCards, setOriginalUserCards] = useState<IUserCardData[]>(
+    []
+  );
+  const [totalPages, setTotalPages] = useState<number>(0);
 
   const searchQuery = useSelector((state: any) => state.search.query);
 
   const getUserCards = async (page: number) => {
     const res = await fetch(`https://reqres.in/api/users?page=${page}`);
-    const json = await res.json();
-    console.log(json.data);
+    const json: IUserApiResponse = await res.json();
+    setTotalPages(json.total_pages);
     setUserCards(json.data);
     setOriginalUserCards(json.data);
-  };
-
-  const handleNextPage = () => {
-    setFilter("all");
-    setPage((prevPage) => prevPage + 1);
-  };
-
-  const handlePrevPage = () => {
-    setFilter("all");
-    setPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
   const filteredUserCards = userCards.filter((userCard) =>
@@ -48,23 +45,32 @@ export const UserCards: FC = () => {
       .includes(searchQuery.toLowerCase())
   );
 
-  const handleFilterChange = (selectedFilter: string) => {
-    switch (selectedFilter) {
-      case "even":
-        const evenFiltered = originalUserCards.filter(
-          (userCard) => userCard.id % 2 === 0
-        );
-        setUserCards(evenFiltered);
-        break;
-      case "odd":
-        const oddFiltered = originalUserCards.filter(
-          (userCard) => userCard.id % 2 !== 0
-        );
-        setUserCards(oddFiltered);
-        break;
-      default:
-        setUserCards(originalUserCards);
-    }
+  const handleFilterChange = useCallback(
+    (selectedFilter: string) => {
+      setFilter(selectedFilter);
+      switch (selectedFilter) {
+        case "even":
+          const evenFiltered = originalUserCards.filter(
+            (userCard) => userCard.id % 2 === 0
+          );
+          setUserCards(evenFiltered);
+          break;
+        case "odd":
+          const oddFiltered = originalUserCards.filter(
+            (userCard) => userCard.id % 2 !== 0
+          );
+          setUserCards(oddFiltered);
+          break;
+        default:
+          setUserCards(originalUserCards);
+      }
+    },
+    [originalUserCards]
+  );
+
+  const handlePageChange = (pageNumber: number) => {
+    setPage(pageNumber);
+    setFilter("all");
   };
 
   useEffect(() => {
@@ -73,26 +79,11 @@ export const UserCards: FC = () => {
 
   useEffect(() => {
     handleFilterChange(filter);
-  }, [filter]);
+  }, [filter, handleFilterChange]);
 
   return (
     <>
-      <div className=" rounded-full bg-gray-200 w-[40%] mb-6 pr-2">
-        <select
-          className="w-full px-4 py-2 rounded-full bg-slate-200"
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}>
-          <option className="" value="all">
-            Показать все
-          </option>
-          <option className="" value="even">
-            Показать четные id
-          </option>
-          <option className="" value="odd">
-            Показать нечетные id
-          </option>
-        </select>
-      </div>
+      <Filter filter={filter} onFilterChange={handleFilterChange} />
 
       <div className="flex flex-col w-full gap-4">
         {filteredUserCards.map((userCard) => (
@@ -102,14 +93,11 @@ export const UserCards: FC = () => {
         ))}
       </div>
 
-      <div className="flex flex-row justify-center gap-8 mt-12">
-        <button onClick={handlePrevPage} disabled={page === 1}>
-          <IoIosArrowBack />
-        </button>
-        <button onClick={handleNextPage}>
-          <IoIosArrowForward />
-        </button>
-      </div>
+      <Pagination
+        currentPage={page}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 interface IInput {
-  value: any;
+  value: string;
 }
 
 export const Input: FC<IInput> = ({ value }) => {

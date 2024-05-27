@@ -9,10 +9,6 @@ export const UserPage: FC = () => {
   const location = useLocation();
   const user = location.state?.user;
 
-  if (!user) {
-    return <div>Данные пользователя не найдены</div>;
-  }
-
   return (
     <>
       <BackBtn />

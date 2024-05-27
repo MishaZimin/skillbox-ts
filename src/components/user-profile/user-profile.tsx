@@ -1,50 +1,19 @@
 import { FC, useEffect, useState } from "react";
 import { Avatar } from "../ui/avatar";
+import { IUserCardData } from "../../components/user-cards/user-cards";
 
-// import { useNavigate } from "react-router-dom";
-// import { MyContext } from "../../features/context/my-provider";
-// import { Input } from "../../shared/ui/input";
-
-type IUserCard = {
-  id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  avatar: string;
-};
-
-interface IProps {
-  userCard: IUserCard;
+interface IUserCard {
+  userCard: IUserCardData;
 }
 
-export const UserProfile: FC<IProps> = ({ userCard }) => {
-  const [firstName, setFirstName] = useState(userCard.first_name);
-  const [lastName, setLastName] = useState(userCard.last_name);
-  const [email, setEmail] = useState(userCard.email);
-
-  // const [user, setUser] = useState({
-  //   firstName: userCard.first_name,
-  //   lastName: userCard.last_name,
-  //   email: userCard.email
-  // });
-
-  // const getUserCards = async () => {
-  //   const res = await fetch(`https://reqres.in/api/users/${userCard.id}`);
-  //   const json = await res.json();
-  //   console.log(json.data);
-  //   return json.data;
-  // };
-
-  // useEffect(() => {
-  //   const res = getUserCards();
-  //   console.log("=res=", res);
-  // });
+export const UserProfile: FC<IUserCard> = ({ userCard }) => {
+  const [firstName, setFirstName] = useState<string>(userCard.first_name);
+  const [lastName, setLastName] = useState<string>(userCard.last_name);
+  const [email, setEmail] = useState<string>(userCard.email);
 
   const handleSave = async () => {
     try {
-      console.log("patch update:", firstName, "|", lastName, "|", email);
       const url = `https://reqres.in/api/users/${userCard.id}`;
-      console.log(url);
       const res = await fetch(url, {
         method: "PATCH",
         body: JSON.stringify({
@@ -57,8 +26,6 @@ export const UserProfile: FC<IProps> = ({ userCard }) => {
       if (!res.ok) {
         throw new Error("error" + res.status);
       }
-      console.log("res: ", res);
-      console.log("status", res.status);
     } catch (error) {
       console.error("error", error);
     }
@@ -68,7 +35,7 @@ export const UserProfile: FC<IProps> = ({ userCard }) => {
 
   return (
     <>
-      <div className="flex flex-row w-full gap-4 p-4 m-4 text-start bg-slate-200 rounded-xl">
+      <div className="flex flex-row w-full gap-4 p-4 m-4 bg-gray-100 text-start rounded-xl">
         <div className="w-[20%] my-auto mx-auto ">
           <Avatar avatar={userCard.avatar} />
         </div>
@@ -92,8 +59,8 @@ export const UserProfile: FC<IProps> = ({ userCard }) => {
           </div>
           <button
             onClick={handleSave}
-            className="px-3 py-1 mt-4 rounded-md bg-slate-100">
-            Сохранить
+            className="px-3 py-1 mt-4 transition duration-200 transform bg-gray-200 rounded-full hover:bg-white">
+            <p>Сохранить</p>
           </button>
         </div>
       </div>

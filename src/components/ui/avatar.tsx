@@ -2,7 +2,7 @@
 import { FC } from "react";
 
 interface IAvatar {
-  avatar: any;
+  avatar: string;
 }
 
 export const Avatar: FC<IAvatar> = ({ avatar }) => {

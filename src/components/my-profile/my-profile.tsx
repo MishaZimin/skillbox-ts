@@ -1,23 +1,9 @@
 import { FC, useEffect, useState } from "react";
+
 import { Avatar } from "../ui/avatar";
-
-// type IUserCard = {
-//   id: number;
-//   email: string;
-//   first_name: string;
-//   last_name: string;
-//   avatar: string;
-// };
-
-// interface IProps {
-//   userCard: IUserCard;
-// }
 
 export const MyProfile: FC = () => {
   const [firstName, setFirstName] = useState<string>(
-    localStorage.getItem("firstName") || ""
-  );
-  const [lastName, setLastName] = useState<string>(
     localStorage.getItem("firstName") || ""
   );
   const [email, setEmail] = useState<string>(
@@ -26,13 +12,11 @@ export const MyProfile: FC = () => {
 
   const handleSave = async () => {
     localStorage.setItem("firstName", firstName);
-    localStorage.setItem("lastName", lastName);
     localStorage.setItem("email", email);
   };
 
   useEffect(() => {
     setFirstName(localStorage.getItem("firstName") || "");
-    setLastName(localStorage.getItem("lastName") || "");
     setEmail(localStorage.getItem("email") || "");
   }, []);
 
@@ -40,14 +24,13 @@ export const MyProfile: FC = () => {
     const avatar = localStorage.getItem("avatar");
     const defAvatar =
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThprVrxe3Zw_m09SuWD2K25LSSP4j9bYjGoA&s";
-    console.log(avatar);
 
     return avatar ? avatar : defAvatar;
   };
 
   return (
     <>
-      <div className="flex flex-row w-full gap-4 p-4 m-4 text-start bg-slate-200 rounded-xl">
+      <div className="flex flex-row w-full gap-4 p-4 m-4 bg-gray-100 text-start rounded-xl">
         <div className="w-[20%] my-auto mx-auto ">
           <Avatar avatar={getAvatar()} />
         </div>
@@ -58,11 +41,6 @@ export const MyProfile: FC = () => {
               onChange={(e) => setFirstName(e.target.value)}
               className="px-3 py-1 rounded-md"
             />
-            {/* <input
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              className="px-3 py-1 rounded-md"
-            /> */}
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -71,7 +49,7 @@ export const MyProfile: FC = () => {
           </div>
           <button
             onClick={handleSave}
-            className="px-3 py-1 mt-4 rounded-md bg-slate-100">
+            className="px-3 py-1 mt-4 transition duration-200 transform bg-gray-200 rounded-full hover:bg-white">
             <p>Сохранить</p>
           </button>
         </div>
