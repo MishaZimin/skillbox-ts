@@ -7,7 +7,7 @@ type FilterProps = {
 
 export const Filter: FC<FilterProps> = ({ filter, onFilterChange }) => {
   return (
-    <div className="rounded-full bg-gray-100 w-[40%] mb-6 pr-2">
+    <div className="rounded-full bg-gray-100 w-[40%] mb-6 pr-2 min-w-[250px]">
       <select
         value={filter}
         className="w-full px-4 py-2 bg-gray-100 rounded-full"

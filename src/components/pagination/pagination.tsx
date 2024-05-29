@@ -2,17 +2,22 @@ import { FC } from "react";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-interface PaginationProps {
+interface IPaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
 }
 
-export const Pagination: FC<PaginationProps> = ({
+export const Pagination: FC<IPaginationProps> = ({
   currentPage,
   totalPages,
   onPageChange,
 }) => {
+  const pageNumbers = Array.from(
+    { length: totalPages },
+    (_, index) => index + 1
+  );
+
   const handlePrevPage = () => {
     onPageChange(Math.max(currentPage - 1, 1));
   };
@@ -26,14 +31,14 @@ export const Pagination: FC<PaginationProps> = ({
       <button onClick={handlePrevPage} disabled={currentPage === 1}>
         <IoIosArrowBack />
       </button>
-      {Array.from({ length: totalPages }, (_, index) => (
+      {pageNumbers.map((pageNumber) => (
         <button
-          key={index + 1}
-          onClick={() => onPageChange(index + 1)}
+          key={pageNumber}
+          onClick={() => onPageChange(pageNumber)}
           className={`px-4 py-2 rounded-md ${
-            currentPage === index + 1 ? "bg-gray-100" : " bg-none"
+            currentPage === pageNumber ? "bg-gray-100" : " bg-none"
           }`}>
-          {index + 1}
+          {pageNumber}
         </button>
       ))}
       <button onClick={handleNextPage} disabled={currentPage === totalPages}>

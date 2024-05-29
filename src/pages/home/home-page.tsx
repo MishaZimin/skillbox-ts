@@ -19,7 +19,7 @@ export const HomePage: FC = () => {
     <>
       <div className="flex flex-col w-full">
         {token ? (
-          <>
+          <div>
             <ProfileBtn />
             <div className="w-[60%] mx-auto mt-12">
               <Search />
@@ -27,7 +27,7 @@ export const HomePage: FC = () => {
             <div className="w-[60%] mx-auto mt-2 mb-12">
               <UserCards />
             </div>
-          </>
+          </div>
         ) : (
           <WelcomeLogIn />
         )}

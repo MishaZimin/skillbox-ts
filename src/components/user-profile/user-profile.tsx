@@ -36,7 +36,7 @@ export const UserProfile: FC<IUserCard> = ({ userCard }) => {
   return (
     <>
       <div className="flex flex-row w-full gap-4 p-4 m-4 bg-gray-100 text-start rounded-xl">
-        <div className="w-[20%] my-auto mx-auto ">
+        <div className="w-[20%] my-auto ">
           <Avatar avatar={userCard.avatar} />
         </div>
         <div className="w-[80%] my-auto">
@@ -59,7 +59,7 @@ export const UserProfile: FC<IUserCard> = ({ userCard }) => {
           </div>
           <button
             onClick={handleSave}
-            className="px-3 py-1 mt-4 transition duration-200 transform bg-gray-200 rounded-full hover:bg-white">
+            className="px-3 py-1 mt-2 transition duration-200 transform bg-gray-200 rounded-full hover:bg-white">
             <p>Сохранить</p>
           </button>
         </div>
