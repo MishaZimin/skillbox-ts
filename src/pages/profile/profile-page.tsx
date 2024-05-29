@@ -7,7 +7,7 @@ export const ProfilePage: FC = () => {
   return (
     <>
       <BackBtn />
-      <div className="w-[60%] mx-auto">
+      <div className="w-[70%] mx-auto min-w-[400px]">
         <MyProfile />
       </div>
     </>

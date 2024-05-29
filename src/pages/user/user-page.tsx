@@ -11,7 +11,7 @@ export const UserPage: FC = () => {
   return (
     <>
       <BackBtn />
-      <div className="w-[60%] mx-auto">
+      <div className="w-[60%] mx-auto min-w-[400px]">
         <UserProfile userCard={user} />
       </div>
     </>

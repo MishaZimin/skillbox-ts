@@ -31,7 +31,7 @@ export const MyProfile: FC = () => {
   return (
     <>
       <div className="flex flex-row w-full gap-4 p-4 m-4 bg-gray-100 text-start rounded-xl">
-        <div className="w-[20%] my-auto mx-auto ">
+        <div className="w-[20%] my-auto mx-auto min-w-[100px]">
           <Avatar avatar={getAvatar()} />
         </div>
         <div className="w-[80%] my-auto">

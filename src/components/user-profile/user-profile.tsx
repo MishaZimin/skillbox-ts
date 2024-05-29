@@ -36,7 +36,7 @@ export const UserProfile: FC<IUserCard> = ({ userCard }) => {
   return (
     <>
       <div className="flex flex-row w-full gap-4 p-4 m-4 bg-gray-100 text-start rounded-xl">
-        <div className="w-[20%] my-auto ">
+        <div className="w-[20%] my-auto min-w-24">
           <Avatar avatar={userCard.avatar} />
         </div>
         <div className="w-[80%] my-auto">

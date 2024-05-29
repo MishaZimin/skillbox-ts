@@ -20,7 +20,7 @@ export const UserCard: FC<IUserCard> = ({ userCard }) => {
       <button
         onClick={handleProfile}
         className="flex flex-row w-full p-2 transition duration-200 transform bg-gray-100 text-start rounded-2xl hover:bg-gray-200 min-w-[300px]">
-        <div className="w-[20%] min-w-24 my-auto">
+        <div className="w-[20%] min-w-24 my-auto ">
           <Avatar avatar={userCard.avatar} />
         </div>
         <div className="w-[80%] my-auto ml-4 flex flex-col">
