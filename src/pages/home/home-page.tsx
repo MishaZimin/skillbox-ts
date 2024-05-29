@@ -21,7 +21,7 @@ export const HomePage: FC = () => {
         {token ? (
           <div>
             <ProfileBtn />
-            <div className="w-[70%] mx-auto mt-12">
+            <div className="w-[70%] mx-auto mt-12 min-w-[300px]">
               <Search />
             </div>
             <div className="w-[70%] mx-auto mt-2 mb-12 min-w-[300px]">
